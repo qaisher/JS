@@ -1,0 +1,106 @@
+<script>
+class box
+{
+    constructor(length)
+    {
+        this.length = length;
+    }
+    display()
+    {
+        console.log(this);
+    }
+};
+
+let obj = new box(20);
+obj.display();
+
+let father = {
+    name: 'john'
+};
+let son1 = {};
+let son = Object.create(father);
+console.log(father.isPrototypeOf(son));
+console.log(father.isPrototypeOf(son1));
+
+var parent = {
+    name:  'Father',
+    sing(){
+        console.log('singing');
+    },
+    drink: ()=>{
+        console.log('drinking');
+    }
+};
+
+var child = {
+    name:'Son',
+    eat(){
+        console.log('eating');
+    }
+};
+
+child.__proto__=parent;
+for(let p in child){
+    console.log(p + ' ' + child.hasOwnProperty(p))
+}
+
+class Fruits {
+    constructor(color){
+        this.color = color;
+    }
+    print(){
+        console.log(this);
+    }
+};
+
+class Apple extends Fruits{
+    constructor(color, type){
+        super(color);
+        this.type = type;
+    }
+    print(){
+        super.print();
+    }
+
+};
+
+let obj1 = new Apple('red', 'apple');
+obj1.print();
+let obj2 = new Fruits('red');
+obj2.print();
+
+//overloading and overriding
+
+class class1 {
+    constructor(name, age){
+        this.name = name;
+        this.age = age;
+    }
+    printTest(name, age){
+        console.log(this.name, this.age);
+    }
+
+    printTest(){
+        console.log(this.name);
+    }
+    printParent(){
+        console.log('print from parent class ' + this.name, this.age, this.address);
+    }
+};
+
+class class2 extends class1{
+    constructor(name, age, address){
+        super(name, age);
+        this.address = address;
+    }
+    printTest(){
+        console.log(this.name, this.age, this.address);
+    }
+}
+
+objClass1 = new class1('kaishar', 27);
+objClass1.printTest();
+objClass2 = new class2('kai', 28, 'address from 2');
+objClass2.printTest();
+objClass2.printParent();
+</script>
