@@ -16,3 +16,21 @@ console.log(subtract(a, b));
 (function(x, y){
     console.log(x+y);
 })(9, 3);
+
+//call, apply and bind
+
+let animal = {
+    name: 'cat',
+    eat(a,b){
+        console.log(this.name + ' is eating ' + a + ' and ' +b);
+    }
+};
+
+let human = {
+    name: 'vikas'
+};
+animal.eat('mango', 'banana');
+animal.eat.call(human, 'bread', 'butter');
+animal.eat.apply(human, ['cake', 'pastry']);
+let bindFunc = animal.eat.bind(human);
+bindFunc('dal', 'chawal');
